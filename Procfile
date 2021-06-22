@@ -1,2 +1,2 @@
-web: gunicorn rate_predict:server
+web: gunicorn main:server
 
