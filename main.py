@@ -123,6 +123,7 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets,
                 title= myheading1,
                 update_title='Loading...',
                 suppress_callback_exceptions=True)
+server = app.server
                 
 colors = {"background": "#F3F6FA", "background_div": "white", 'text': '#009999'}
 app.layout = html.Div(style={'backgroundColor': colors['background']}, children=[
