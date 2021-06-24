@@ -17,8 +17,10 @@ from dash.dependencies import Input, Output, State
 import os 
 
 from layout import tab_layout
+import json
+with open('config.json','r') as f:
+    api = json.load(f)
 
-API_KEY = '193300c0-d20a-11eb-b5c2-a7301e0d53ec'
 
 today = str(datetime.date.today())
 requests_cache.install_cache('freecurrency_cache', backend='sqlite', expire_after=300)
@@ -30,7 +32,7 @@ def return_api():
     headers = {
         'accept': "application/json",
         'content-type': "application/json",
-        'apikey': "193300c0-d20a-11eb-b5c2-a7301e0d53ec"
+        'apikey': api['API']
         }
 
     response = requests.request("GET", url, headers=headers)
@@ -43,7 +45,7 @@ def return_api():
     
 curr_dict = {'JPY':'Japanese Yen',  'GBP':'Great Britain Pound',
         'AUD':'Australian Dollar',  'CAD':'Canadian Dollar', 'CNY':'Chinese Yen',
-       'HKD': 'Hongkong Dollar', 'INR':'Indian Rupee', 'SGD': 'Singapoer Dollar'}
+       'HKD': 'Hongkong Dollar', 'INR':'Indian Rupee', 'SGD': 'Singapore Dollar'}
 curren = ['JPY', 'GBP', 'AUD', 'CAD', 'CNY','HKD', 'INR', 'SGD']    
     
     
